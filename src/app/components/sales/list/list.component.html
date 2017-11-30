@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading" style="background-color:#202020; color:#A0A0A0">Lista de Ventas</div>
+  <div class="panel-body"  style="background-color:#A0A0A0">
+    <table class="table">
+      <thead>
+        <tr>
+         <th>Orden</th>
+          <th>Fecha</th>
+          <th>Cliente</th>
+          <th>Direccion</th>
+          <th>Productos</th>
+          <th>Total</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sale of sales | filter:flt; let indx = index">
+          <td>{{sale.order}}</td>
+          <td>{{sale.date | date:"dd-MMM-y"}}</td>
+          <td>{{sale.client.name}} {{sale.client.lastName}}</td>
+          <td>{{sale.address.city}} {{sales.address.city}} {{sales.address.zip}}</td>
+          <td>{{sale.items.length}}</td>
+          <td><span *ngFor= "let item of sales.items | filter:flt; let indx = index" >{{item.name}},</span></td>
+          <td><button type="button" class="btn btn-sm btn-primary" (click)="onEdit(item)" data-toggle="modal" data-target="#salesModal">Editar </button></td>
+          <td><button type="button" class="btn btn-sm btn-danger"  (click)="onDelete(indx)">Eliminar </button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
